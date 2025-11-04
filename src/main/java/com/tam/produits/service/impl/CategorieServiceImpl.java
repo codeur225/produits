@@ -1,13 +1,13 @@
-package com.tam.prodtuits.service.impl;
+package com.tam.produits.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tam.prodtuits.entities.Categorie;
-import com.tam.prodtuits.repository.CategorieRepository;
-import com.tam.prodtuits.service.CategorieService;
+import com.tam.produits.entities.Categorie;
+import com.tam.produits.repository.CategorieRepository;
+import com.tam.produits.service.CategorieService;
 
 @Service
 public class CategorieServiceImpl implements CategorieService {

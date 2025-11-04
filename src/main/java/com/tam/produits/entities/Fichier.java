@@ -1,33 +1,33 @@
 package com.tam.produits.entities;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
 
+@Entity
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-//@ToString(exclude = "produits")
-public class Categorie {
-	
+public class Fichier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCat;
-	private String nomCat;
-	private String descriptionCat;
+	private Long idFichier;
+	private String name;
+	private String type;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "categorie")
-	private List<Produit> produits;
-
+	@Column(name = "FICHIER", length = 4048576)
+	@Lob
+	private byte[] image;
+	
+	@OneToOne
+	private Produit produit;
 }

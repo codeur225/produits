@@ -1,4 +1,4 @@
-package com.tam.prodtuits.security;
+package com.tam.produits.security;
 
 import java.io.IOException;
 import java.util.ArrayList;

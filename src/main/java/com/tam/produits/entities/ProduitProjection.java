@@ -1,4 +1,4 @@
-package com.tam.prodtuits.entities;
+package com.tam.produits.entities;
 
 import org.springframework.data.rest.core.config.Projection;
 

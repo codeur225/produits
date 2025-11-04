@@ -1,4 +1,4 @@
-package com.tam.prodtuits.restcontrollers;
+package com.tam.produits.restcontrollers;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tam.prodtuits.entities.Categorie;
-import com.tam.prodtuits.service.CategorieService;
+import com.tam.produits.entities.Categorie;
+import com.tam.produits.service.CategorieService;
 
 @RestController
 @RequestMapping("/api/cat")

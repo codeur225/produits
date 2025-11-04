@@ -1,9 +1,9 @@
-package com.tam.prodtuits.service;
+package com.tam.produits.service;
 
 import java.util.List;
 
-import com.tam.prodtuits.entities.Categorie;
-import com.tam.prodtuits.entities.Produit;
+import com.tam.produits.entities.Categorie;
+import com.tam.produits.entities.Produit;
 
 public interface ProduitService {
 	Produit saveProduit(Produit p);

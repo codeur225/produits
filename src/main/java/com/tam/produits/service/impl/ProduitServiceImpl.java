@@ -1,29 +1,42 @@
-package com.tam.prodtuits.service.impl;
+package com.tam.produits.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tam.prodtuits.entities.Categorie;
-import com.tam.prodtuits.entities.Produit;
-import com.tam.prodtuits.repository.ProduitRepository;
-import com.tam.prodtuits.service.ProduitService;
+import com.tam.produits.entities.Categorie;
+import com.tam.produits.entities.Produit;
+import com.tam.produits.repository.FichierRepository;
+import com.tam.produits.repository.ProduitRepository;
+import com.tam.produits.service.ProduitService;
 
 @Service
 public class ProduitServiceImpl implements ProduitService {
 	
 	@Autowired
 	ProduitRepository produitRepository;
+	
+	@Autowired
+	FichierRepository fichierRepository;
 
 	@Override
 	public Produit saveProduit(Produit p) {
 		return produitRepository.save(p);
 	}
 
-	@Override
+	/*@Override
 	public Produit updateProduit(Produit p) {
 		return produitRepository.save(p);
+	}*/
+	
+	public Produit updateProduit(Produit p) {
+		Long oldProdImageId = this.getProduitById(p.getIdProduit()).getFichier().getIdFichier();
+		Long newProdImageId = p.getFichier().getIdFichier();
+		Produit prodUpdated = produitRepository.save(p);
+		if (oldProdImageId != newProdImageId) // si l'image a été modifiée
+			fichierRepository.deleteById(oldProdImageId);
+		return prodUpdated;
 	}
 	
 	@Override

@@ -1,4 +1,4 @@
-package com.tam.prodtuits.security;
+package com.tam.produits.security;
 
 import java.util.Collections;
 
@@ -45,16 +45,17 @@ public class SecurityConfig {
         }))
 				
 	     .authorizeHttpRequests( requests -> requests
-    		  .requestMatchers("/api/all/**").hasAnyAuthority("ADMIN","USER")
-			  .requestMatchers(HttpMethod.GET,"/api/getbyid/**").hasAnyAuthority("ADMIN","USER")
-			  //la 2e methode @PreAuthorize("hasAuthority('ADMIN')") de @EnableMethodSecurity(prePostEnabled = true) est utilisé pour securiser cette route
-			  //.requestMatchers(HttpMethod.POST,"/api/addprod/**").hasAnyAuthority("ADMIN")
-			  .requestMatchers(HttpMethod.PUT,"/api/updateprod/**").hasAuthority("ADMIN")
-			  .requestMatchers(HttpMethod.DELETE,"/api/delprod/**").hasAuthority("ADMIN")
-			  .anyRequest().authenticated() )
+	    		 .anyRequest().permitAll());
+    		  //.requestMatchers("/api/all/**").hasAnyAuthority("ADMIN","USER")
+			  //.requestMatchers(HttpMethod.GET,"/api/getbyid/**").hasAnyAuthority("ADMIN","USER")
+			  ////la 2e methode @PreAuthorize("hasAuthority('ADMIN')") de @EnableMethodSecurity(prePostEnabled = true) est utilisé pour securiser cette route
+			  ////.requestMatchers(HttpMethod.POST,"/api/addprod/**").hasAnyAuthority("ADMIN")
+			  //.requestMatchers(HttpMethod.PUT,"/api/updateprod/**").hasAuthority("ADMIN")
+			  //.requestMatchers(HttpMethod.DELETE,"/api/delprod/**").hasAuthority("ADMIN")
+			  //.anyRequest().authenticated() )
 	     
-	     .addFilterBefore(new JWTAuthorizationFilter(),
-			UsernamePasswordAuthenticationFilter.class);
+	     //.addFilterBefore(new JWTAuthorizationFilter(),
+			//UsernamePasswordAuthenticationFilter.class);
 		
 	return http.build();
 	}

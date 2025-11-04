@@ -1,4 +1,4 @@
-package com.tam.prodtuits.repository;
+package com.tam.produits.repository;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.tam.prodtuits.entities.Categorie;
-import com.tam.prodtuits.entities.Produit;
+import com.tam.produits.entities.Categorie;
+import com.tam.produits.entities.Produit;
 
 @RepositoryRestResource(path = "rest")
 public interface ProduitRepository extends JpaRepository<Produit, Long> {

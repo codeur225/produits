@@ -25,26 +25,21 @@ public class ImageRestController {
 	 @Autowired
 	 ProduitService produitService;
 	 
-	 
-	 /*@RequestMapping(value = "/uploadFS/{id}" , method = RequestMethod.POST)
-	 public void uploadImageFS(@RequestParam("image") MultipartFile 
-			 file,@PathVariable("id") Long id) throws IOException {
-		 Produit p = produitService.getProduitById(id);
-		 p.setFichierPath(id+".jpg");
+	@RequestMapping(value = "/uploadFS/{id}", method = RequestMethod.POST)
+	public void uploadImageFS(@RequestParam("image") MultipartFile file, @PathVariable("id") Long id) throws IOException {
+		Produit p = produitService.getProduitById(id);
+		p.setFichierPath(id + ".jpg");
 
-		 Files.write(Paths.get(System.getProperty("user.home")+"/images/"+p.getFichierPath())
-				 , file.getBytes());
-		 produitService.saveProduit(p);
+		Files.write(Paths.get(System.getProperty("user.home") + "/images/" + p.getFichierPath()), file.getBytes());
+		produitService.saveProduit(p);
+	}
 
-	 }
-	 @RequestMapping(value = "/loadfromFS/{id}" , 
-			 method = RequestMethod.GET,
-			 produces = MediaType.IMAGE_JPEG_VALUE)
-	 public byte[] getImageFS(@PathVariable("id") Long id) throws IOException {
+	@RequestMapping(value = "/loadfromFS/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	public byte[] getImageFS(@PathVariable("id") Long id) throws IOException {
 
-		 Produit p = produitService.getProduitById(id);
-		 return	 Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/images/"+p.getFichierPath()));
-	 }*/	 
+		Produit p = produitService.getProduitById(id);
+		return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/images/" + p.getFichierPath()));
+	}	 
 	 
 	 @RequestMapping(value = "/upload" , method = RequestMethod.POST)
 	 public Fichier uploadFichier(@RequestParam("image") MultipartFile file) throws IOException {

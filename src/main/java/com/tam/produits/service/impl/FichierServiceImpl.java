@@ -74,6 +74,6 @@ public class FichierServiceImpl implements FichierService {
 	@Override
 	public List<Fichier> getFichierParProd(Long prodId) {
 		Produit p = produitRepository.findById(prodId).get();
-		return p.getImages();
+		return p.getFichiers();
 	}
 }

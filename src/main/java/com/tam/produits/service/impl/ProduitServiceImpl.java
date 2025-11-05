@@ -1,5 +1,8 @@
 package com.tam.produits.service.impl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +47,20 @@ public class ProduitServiceImpl implements ProduitService {
 		produitRepository.delete(p);
 	}
 	
+	/*@Override
+	public void deleteProduitById(Long id) {
+		produitRepository.deleteById(id);
+	}*/
+	
 	@Override
 	public void deleteProduitById(Long id) {
+		Produit p = getProduitById(id);
+		// supprimer l'image avant de supprimer le produit
+		try {
+			Files.delete(Paths.get(System.getProperty("user.home") + "/images/" + p.getFichierPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		produitRepository.deleteById(id);
 	}
 	

@@ -31,11 +31,11 @@ public class ProduitServiceImpl implements ProduitService {
 	}*/
 	
 	public Produit updateProduit(Produit p) {
-		Long oldProdImageId = this.getProduitById(p.getIdProduit()).getFichier().getIdFichier();
-		Long newProdImageId = p.getFichier().getIdFichier();
+		//Long oldProdImageId = this.getProduitById(p.getIdProduit()).getFichier().getIdFichier();
+		//Long newProdImageId = p.getFichier().getIdFichier();
 		Produit prodUpdated = produitRepository.save(p);
-		if (oldProdImageId != newProdImageId) // si l'image a été modifiée
-			fichierRepository.deleteById(oldProdImageId);
+		/*if (oldProdImageId != newProdImageId) // si l'image a été modifiée
+			fichierRepository.deleteById(oldProdImageId);*/
 		return prodUpdated;
 	}
 	

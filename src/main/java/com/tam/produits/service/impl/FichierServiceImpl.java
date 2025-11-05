@@ -1,6 +1,7 @@
 package com.tam.produits.service.impl;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tam.produits.entities.Fichier;
+import com.tam.produits.entities.Produit;
 import com.tam.produits.repository.FichierRepository;
+import com.tam.produits.repository.ProduitRepository;
 import com.tam.produits.service.FichierService;
 import com.tam.produits.service.ProduitService;
 
@@ -21,6 +24,8 @@ public class FichierServiceImpl implements FichierService {
 	FichierRepository fichierRepository;
 	@Autowired
 	ProduitService produitService;
+	@Autowired
+	ProduitRepository produitRepository;
 
 	@Override
 	public Fichier uplaodFichier(MultipartFile file) throws IOException {
@@ -56,5 +61,19 @@ public class FichierServiceImpl implements FichierService {
 	@Override
 	public void deleteFichier(Long id) {
 		fichierRepository.deleteById(id);
+	}
+
+	@Override
+	public Fichier uplaodFichierProd(MultipartFile file, Long idProd) throws IOException {
+		Produit p = new Produit();
+		p.setIdProduit(idProd);
+		return fichierRepository.save(Fichier.builder().name(file.getOriginalFilename()).type(file.getContentType())
+				.image(file.getBytes()).produit(p).build());
+	}
+
+	@Override
+	public List<Fichier> getFichierParProd(Long prodId) {
+		Produit p = produitRepository.findById(prodId).get();
+		return p.getImages();
 	}
 }

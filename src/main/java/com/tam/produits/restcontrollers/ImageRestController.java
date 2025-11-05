@@ -52,21 +52,16 @@ public class ImageRestController {
 		 	return fichierService.uplaodFichier(file);
 	 }
 	 
-	 /*@PostMapping(value = "/uplaodImageProd/{idProd}" )
-	 public Fichier uploadMultiImages(@RequestParam("image")MultipartFile file,
-			 @PathVariable("idProd") Long idProd) 
-					 throws IOException {
-		 return fichierService.uplaodFichierProd(file,idProd);
-	 }
-	 
-	 @RequestMapping(value = "/getImagesProd/{idProd}" , method = RequestMethod.GET)
-	 public List<Fichier> getFichierProd(@PathVariable("idProd") Long idProd) 
-			 throws IOException {
-		 return FichierService.getFichierParProd(idProd);
-	 }*/
-	 
-	 
-	 
+	@PostMapping(value = "/uplaodImageProd/{idProd}")
+	public Fichier uploadMultiFichier(@RequestParam("image") MultipartFile file, @PathVariable("idProd") Long idProd)
+			throws IOException {
+		return fichierService.uplaodFichierProd(file, idProd);
+	}
+
+	@RequestMapping(value = "/getImagesProd/{idProd}", method = RequestMethod.GET)
+	public List<Fichier> getImagesProd(@PathVariable("idProd") Long idProd) throws IOException {
+		return fichierService.getFichierParProd(idProd);
+	}
 	 
 	 @RequestMapping(value = "/get/info/{id}" , method = RequestMethod.GET)
 	 public Fichier getFichierDetails(@PathVariable("id") Long id) throws IOException {

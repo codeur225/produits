@@ -4,13 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Builder
@@ -28,6 +33,8 @@ public class Fichier {
 	@Lob
 	private byte[] image;
 	
-	@OneToOne
+	@ManyToOne()
+	@JoinColumn (name="PRODUIT_ID")
+	@JsonIgnore
 	private Produit produit;
 }

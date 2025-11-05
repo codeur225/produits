@@ -1,6 +1,8 @@
 package com.tam.produits.service;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,4 +16,7 @@ public interface FichierService {
 	ResponseEntity<byte[]> getFichier(Long id) throws IOException;
 
 	void deleteFichier(Long id);
+	
+	Fichier uplaodFichierProd(MultipartFile file,Long idProd) throws IOException;
+	List<Fichier> getFichierParProd(Long prodId);
 }
